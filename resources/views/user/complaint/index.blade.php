@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid p-0 mt-3">
-        <h1 class="h3 mb-3">Complaints</h1>
+        <h1 class="h3 mb-3">My Complaints</h1>
         @if(session('success'))
             <div class="alert alert-success mb-4" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">

@@ -27,7 +27,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="{{url('/')}}">ABC Company</a>
+                <a class="navbar-brand" href="{{url('/')}}">XYZ Company</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
@@ -37,9 +37,7 @@
                                 <li class="nav-item @if(Route::currentRouteName() == 'login') active @endif"><a class="nav-link" href="{{ route('login') }}">Log in</a></li>
 
                                 @if (Route::has('register'))
-                                    <li class="nav-item @if(Route::currentRouteName() == 'register') active @endif"><a class="nav-link" href="{{ route('register') }}">User Register</a>
-                                    </li>
-                                    <li class="nav-item @if(Route::currentRouteName() == 'admin.register') active @endif"><a class="nav-link" href="{{ route('admin.register') }}">Admin Register</a>
+                                    <li class="nav-item @if(Route::currentRouteName() == 'register') active @endif"><a class="nav-link" href="{{ route('register') }}">Register</a>
                                     </li>
                                 @endif
                             @endauth

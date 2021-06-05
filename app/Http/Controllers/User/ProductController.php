@@ -1,25 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Complaint;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class AdminComplaintController extends Controller
+class ProductController extends Controller
 {
-    protected $complaint;
-    protected $user;
-    protected $category;
-    public function __construct(Complaint $complaint, User $user, Category $category)
-    {
-        $this->complaint = $complaint;
-        $this->user = $user;
-        $this->category = $category;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -27,8 +14,7 @@ class AdminComplaintController extends Controller
      */
     public function index()
     {
-        $complaints = $this->complaint::select()->get();
-        return view('admin.complaint.index', compact('complaints'));
+        //
     }
 
     /**
@@ -71,10 +57,7 @@ class AdminComplaintController extends Controller
      */
     public function edit($id)
     {
-        $complaint = $this->complaint::findOrFail($id);
-        $user = $this->user::findOrFail($complaint->user_id);
-        $category = $this->category::findOrFail($complaint->complaint_category);
-        return view('admin.complaint.edit', compact('complaint','user', 'category'));
+        //
     }
 
     /**
@@ -86,10 +69,7 @@ class AdminComplaintController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->complaint::where(['id'=>$id])->update([
-            'status' => $request->complaintStatus,
-        ]);
-        return redirect()->route('admin.complaint.index')->with('success', 'Complaint is updated');
+        //
     }
 
     /**

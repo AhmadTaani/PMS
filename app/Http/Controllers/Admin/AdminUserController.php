@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminUserController extends Controller
 {
+    private const VIEW_PATH = 'admin.users.';
     protected $user;
     public function __construct(User $user)
     {
@@ -25,7 +26,7 @@ class AdminUserController extends Controller
     public function index()
     {
         $users = $this->user::select()->get();
-        return view('admin.users.index',compact('users'));
+        return view(self::VIEW_PATH.'index',compact('users'));
     }
 
     /**
@@ -35,7 +36,7 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        //
+        return view(self::VIEW_PATH.'create');
     }
 
     /**
@@ -44,25 +45,12 @@ class AdminUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        $this->user->create_user($request);
+        return redirect()->route('admin.user.index')->with('success', 'User is created');
     }
-    protected function regForm()
-    {
-        return view('auth.register-admin');
-    }
-    protected function createAdmin(Request $request)
-    {
-         $user = $this->user::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => 'admin',
-        ]);
-        Auth::loginUsingId($user->id);
-        return redirect()->route('home');
-    }
+
 
     /**
      * Display the specified resource.
@@ -84,7 +72,7 @@ class AdminUserController extends Controller
     public function edit($id)
     {
         $user = $this->user::findOrFail($id);
-        return view('admin.users.edit',compact('user'));
+        return view(self::VIEW_PATH.'edit',compact('user'));
     }
 
     /**
@@ -98,7 +86,7 @@ class AdminUserController extends Controller
     {
         $this->user::where('id',$id)->update([
             'name' => $request->username,
-            'email' => $request->userEmail,
+            'email' => $request->email,
             'role' => $request->userRole
         ]);
         return redirect()->route('admin.user.index')->with('success', 'User is updated');
@@ -112,6 +100,8 @@ class AdminUserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = $this->user::findOrFail($id);
+        $user->delete();
+        return redirect()->back()->with('success', 'User is deleted');
     }
 }

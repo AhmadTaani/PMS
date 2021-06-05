@@ -37,7 +37,21 @@
                             <td>{{$user->role}}</td>
                             <td class="table-action">
                                 <a href="{{route('admin.user.edit',$user->id)}}"><i
-                                        class="right fas fa-edit"></i></a>
+                                        class="right fas fa-edit" style="color: black"></i></a>
+                                <form method="POST" style="display: inline-block;"
+                                      id="delete-form-{{$user->id}}" action="{{route('admin.user.destroy', $user->id)}}">
+                                    {{csrf_field()}}
+                                    {{method_field('delete')}}
+                                </form>
+                                <a onclick="if(confirm('Are you sure to delete this data ? ')){
+                                    event.preventDefault();
+                                    document.getElementById('delete-form-{{$user->id}}').submit();
+                                    }else{
+                                    event.preventDefault();
+                                    }
+                                    ">
+                                    <i class="fas fa-trash"></i>
+                                </a>
                             </td>
                         </tr>
                     @endforeach

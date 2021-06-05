@@ -14,6 +14,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::create(['category_name' => 'general']);
+        Category::create(['name' => 'general']);
     }
 }

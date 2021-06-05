@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -42,8 +42,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function complaints()
+    public function products()
     {
-        return $this->hasMany(Complaint::class, 'complaint_category');
+        return $this->hasMany(Product::class, 'product_category');
+    }
+
+    public function create_user($request)
+    {
+        self::create([
+            'name' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->userPassword),
+            'role' => $request->userRole
+        ]);
     }
 }

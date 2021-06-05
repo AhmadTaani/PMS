@@ -18,7 +18,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">ABC Company</a>
+        <a class="navbar-brand" href="{{ url('/') }}">XYZ Company</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
                 class="navbar-toggler-icon"></span></button>
@@ -32,9 +32,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Log in</a></li>
 
                         @if (Route::has('register'))
-                            <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">User Register</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.register') }}">Admin Register</a>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a>
                             </li>
                             {{--                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>--}}
                         @endif
@@ -58,7 +56,7 @@
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-lg-12">
-                <h1 class="display-4 text-white mt-5 mb-2">Complaint Management Portal</h1>
+                <h1 class="display-4 text-white mt-5 mb-2">Products Management Portal</h1>
                 <p class="lead mb-5 text-white-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non
                     possimus ab labore provident mollitia. Id assumenda voluptate earum corporis facere quibusdam
                     quisquam iste ipsa cumque unde nisi, totam quas ipsam.</p>

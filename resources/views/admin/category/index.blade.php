@@ -22,10 +22,25 @@
                     @foreach($categories as $category)
                         <tr>
                             <td>{{$category->id}}</td>
-                            <td>{{$category->category_name}}</td>
+                            <td>{{$category->name}}</td>
 
                             <td class="table-action">
-                                <a href="{{route('admin.category.edit',$category->id)}}"><i class="right fas fa-edit"></i></a>
+                                <a href="{{route('admin.category.edit',$category->id)}}">
+                                    <i class="right fas fa-edit" style="color: black"></i></a>
+                                <form method="POST" style="display: inline-block;"
+                                      id="delete-form-{{$category->id}}" action="{{route('admin.user.destroy', $category->id)}}">
+                                    {{csrf_field()}}
+                                    {{method_field('delete')}}
+                                </form>
+                                <a onclick="if(confirm('Are you sure to delete this data ? ')){
+                                    event.preventDefault();
+                                    document.getElementById('delete-form-{{$category->id}}').submit();
+                                    }else{
+                                    event.preventDefault();
+                                    }
+                                    ">
+                                    <i class="fas fa-trash"></i>
+                                </a>
                             </td>
                         </tr>
                     @endforeach

@@ -8,7 +8,7 @@
                     <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
                         <div class="widget-content widget-content-area br-6">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                <h4>Show Complaint</h4>
+                                <h4>Complaint Details</h4>
                             </div>
                             <div class="table-responsive mb-4 mt-4">
 

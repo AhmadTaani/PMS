@@ -4,12 +4,11 @@
     <div class="container-fluid mt-3">
         <div class="card">
             <div class="card-header">
-                <h4>Edit User</h4>
+                <h4>Create User</h4>
             </div>
             <div class="card-body">
-                <form method="post" action="{{route('admin.user.update',$user->id)}}">
+                <form method="post" action="{{route('admin.user.store')}}">
                     @csrf
-                    <input type="hidden" name="_method" value="put"/>
                     @if($errors->any())
                         <ol class="alert alert-danger mb-4" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -26,15 +25,15 @@
                     @endif
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="username">User Name</label>
+                            <label for="username">Full Name</label>
                             <input type="text" name="username"
-                                   @if(isset($user->name)) value="{{$user->name}}" @endif
+                                   @if($errors->any()) value="{{old('username')}}" @endif
                                    class="form-control" id="username" required>
                         </div>
                         <div class="col-md-6">
                             <label for="user-email">User Email</label>
                             <input type="text" name="email"
-                                   @if(isset($user->email)) value="{{$user->email}}" @endif
+                                   @if($errors->any()) value="{{old('email')}}" @endif
                                    class="form-control" id="user-email" required>
                         </div>
                     </div>
@@ -47,12 +46,12 @@
                         <div class="col-md-6">
                             <label for="userRole">User Role</label>
                             <select name="userRole" class="form-control" id="userRole" required>
-                                <option value="admin" @if($user->role == 'admin')selected="true"@endif>Admin</option>
-                                <option value="user" @if($user->role == 'user')selected="true"@endif>User</option>
+                                <option value="admin" @if(old('userRole') == 'admin')selected="true"@endif>Admin</option>
+                                <option value="user" @if(old('userRole') == 'user')selected="true"@endif>User</option>
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mt-3">Save</button>
+                    <button type="submit" class="btn btn-primary mt-3">Create</button>
                 </form>
             </div>
         </div>

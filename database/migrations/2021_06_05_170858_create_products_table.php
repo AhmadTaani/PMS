@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateComplaintsTable extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class CreateComplaintsTable extends Migration
      */
     public function up()
     {
-        Schema::create('complaints', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('name');
             $table->longtext('description');
-            $table->enum('status', ['resolved', 'pending resolution','dismissed'])->default('pending resolution');
+            $table->integer('quantity');
+            $table->integer('price');
+            $table->string('image');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->bigInteger('complaint_category')->unsigned();
-            $table->foreign('complaint_category')->references('id')->on('categories');
+            $table->bigInteger('product_category')->unsigned();
+            $table->foreign('product_category')->references('id')->on('categories');
             $table->timestamps();
         });
     }
@@ -33,6 +35,6 @@ class CreateComplaintsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('complaints');
+        Schema::dropIfExists('products');
     }
 }

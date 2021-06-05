@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -68,14 +64,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('complaint.create')}}"
-                                   class="nav-link @if( Route::currentRouteName() == 'complaint.create') active @endif">
+                                <a href="{{route('product.create')}}"
+                                   class="nav-link @if( Route::currentRouteName() == 'product.create') active @endif">
                                     <p>Submit Complaint</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('complaint.index')}}"
-                                   class="nav-link @if( Route::currentRouteName() == 'complaint.index') active @endif">
+                                <a href="{{route('product.index')}}"
+                                   class="nav-link @if( Route::currentRouteName() == 'product.index') active @endif">
                                     <p>View Complaints</p>
                                 </a>
                             </li>
@@ -83,7 +79,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
 
                     <li class="nav-item">
-                        <a href="logout" class="nav-link">
+                        <a href="{{route('logout')}}" class="nav-link">
                             <i class="nav-icon fas fa-sign-out-alt"></i>
                             <p>
                                 Sign Out
@@ -108,6 +104,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!--  END CONTENT AREA  -->
         </div>
         <!-- /.content -->
+        <div style="display: flex;justify-content: center;">
+            <div style="display: flex;flex-direction: column;">
+                <div>
+                    <img src="https://picsum.photos/seed/picsum/300/200" alt="demo image"/> </div>
+                <div style="text-align: center;margin-top: 10px;color:#4D4D4D">
+                    <strong> This is a demo task </strong>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- /.content-wrapper -->
 
@@ -115,7 +120,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main Footer -->
     <footer class="main-footer">
         <!-- Default to the left -->
-        <strong>Complaint Management System</strong>
+        <strong>Products Management System</strong>
     </footer>
 </div>
 <!-- ./wrapper -->

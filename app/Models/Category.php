@@ -14,11 +14,11 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'category_name',
+        'name',
     ];
 
-    public function complaints()
+    public function products()
     {
-        return $this->hasMany(Complaint::class, 'complaint_category');
+        return $this->hasMany(Product::class, 'product_category');
     }
 }

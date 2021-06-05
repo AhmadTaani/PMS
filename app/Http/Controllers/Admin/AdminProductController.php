@@ -1,24 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ComplaintRequest;
-use App\Models\Category;
-use App\Models\Complaint;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class ComplaintController extends Controller
+class AdminProductController extends Controller
 {
-    protected $complaint;
-    protected $category;
-    public function __construct(Complaint $complaint, Category $category)
-    {
-        $this->complaint = $complaint;
-        $this->category = $category;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -26,9 +14,7 @@ class ComplaintController extends Controller
      */
     public function index()
     {
-        $userID = Auth::user()->id;
-        $complaints = $this->complaint::select()->where('user_id',$userID)->get();
-        return view('user.complaint.index', compact('complaints'));
+        //
     }
 
     /**
@@ -38,8 +24,7 @@ class ComplaintController extends Controller
      */
     public function create()
     {
-        $categories = $this->category::select()->get();
-        return view('user.complaint.create', compact('categories'));
+        //
     }
 
     /**
@@ -48,15 +33,9 @@ class ComplaintController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ComplaintRequest $request)
+    public function store(Request $request)
     {
-        $this->complaint::create([
-           'title' => $request->complaintTitle,
-            'description' => $request->complaintDesc,
-            'user_id' => Auth::user()->id,
-            'complaint_category' => $request->complaintCategory
-        ]);
-        return redirect()->route('complaint.index')->with('success', 'Complaint is submitted');
+        //
     }
 
     /**
@@ -67,9 +46,7 @@ class ComplaintController extends Controller
      */
     public function show($id)
     {
-        $complaint = $this->complaint::findOrFail($id);
-        $category = $this->category::findOrFail($complaint->complaint_category);
-        return view('user.complaint.show',compact('complaint','category'));
+        //
     }
 
     /**
